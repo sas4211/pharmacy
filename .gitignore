@@ -1,0 +1,41 @@
+# ── Next.js ──────────────────────────────────────────────────────────────────
+frontend/.next/
+frontend/out/
+frontend/node_modules/
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/yarn-error.log*
+frontend/.env.local
+frontend/.env*.local
+
+# ── Python / FastAPI ──────────────────────────────────────────────────────────
+backend/.env
+backend/__pycache__/
+backend/*.py[cod]
+backend/*$py.class
+backend/.pytest_cache/
+backend/.venv/
+backend/env/
+backend/venv/
+backend/ENV/
+backend/uploads/*
+!backend/uploads/.gitkeep
+
+# ── React Native / Mobile ─────────────────────────────────────────────────────
+mobile/node_modules/
+mobile/.expo/
+mobile/dist/
+mobile/npm-debug.log*
+mobile/.env
+
+# ── System / IDE ──────────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+.omc/
+.claude/
+.agents/
+
+# ── Deployment ────────────────────────────────────────────────────────────────
+.vercel

@@ -1,0 +1,10 @@
+.omc
+.claude
+.agents
+mobile
+cinematic-site-components
+backend/uploads
+frontend/.next
+frontend/node_modules
+backend/__pycache__
+*.pyc
