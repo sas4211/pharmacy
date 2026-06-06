@@ -3,6 +3,7 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { useRouter } from 'next/navigation'
 import { useCart, useAuth, useToast } from '@/store'
 import PaymentBadges from './PaymentBadges'
+import { mapProductImage } from '@/lib/images'
 
 export default function CartDrawer() {
   const router = useRouter()
@@ -74,10 +75,12 @@ export default function CartDrawer() {
                         exit={{ opacity: 0, x: 20 }}
                         className="flex items-center gap-4 p-4 bg-off-white/50 rounded-2xl border border-black/[0.03] hover:bg-off-white transition-colors duration-300"
                       >
-                        <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center shadow-sm shrink-0 border border-black/[0.05]">
-                          {item.emoji || (
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-6 h-6 text-blue-600/40"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z" /><path d="m14.5 9.5-5 5" /><path d="M8.5 8.5c-.7-.7-1.8-.7-2.5 0s-.7 1.8 0 2.5l5.5 5.5c.7.7 1.8.7 2.5 0s.7-1.8 0-2.5z" /></svg>
-                          )}
+                        <div className="w-12 h-12 rounded-xl overflow-hidden bg-white flex items-center justify-center shadow-sm shrink-0 border border-black/[0.05] select-none">
+                          <img 
+                            src={mapProductImage(item.name)} 
+                            alt={item.name} 
+                            className="w-full h-full object-cover"
+                          />
                         </div>
                         <div className="flex-1 min-w-0">
                           <h4 className="font-poppins font-semibold text-sm text-charcoal truncate">{item.name}</h4>

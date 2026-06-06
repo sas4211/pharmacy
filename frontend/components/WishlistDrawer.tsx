@@ -1,6 +1,7 @@
 'use client'
 import { AnimatePresence, motion } from 'framer-motion'
 import { useWishlist, useCart, useToast } from '@/store'
+import { mapProductImage } from '@/lib/images'
 
 export default function WishlistDrawer() {
   const { items, open, closeWishlist, removeItem } = useWishlist()
@@ -58,8 +59,12 @@ export default function WishlistDrawer() {
                       animate={{ opacity: 1, x: 0 }}
                       className="flex items-center gap-3 p-3 bg-off-white rounded-xl"
                     >
-                      <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center text-2xl shadow-sm shrink-0">
-                        {item.emoji}
+                      <div className="w-12 h-12 rounded-xl overflow-hidden bg-white flex items-center justify-center shadow-sm shrink-0 select-none border border-black/5">
+                        <img 
+                          src={mapProductImage(item.name)} 
+                          alt={item.name} 
+                          className="w-full h-full object-cover"
+                        />
                       </div>
                       <div className="flex-1 min-w-0">
                         <h4 className="font-poppins font-semibold text-sm text-charcoal truncate">{item.name}</h4>

@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { useCart, useToast } from '@/store'
+import { mapProductImage } from '@/lib/images'
 
 const FLASH_PRODUCTS = [
   { emoji: '🧴', brand: 'Neutrogena', name: 'Hydro Boost Water Gel 50ml', price: 1400, was: 2000, discount: 30, sold: 72, left: 8,
@@ -86,9 +87,14 @@ export default function FlashSale() {
               >
                 {/* Double Bezel Inner Core */}
                 <div className="bg-white/[0.02] rounded-[18px] overflow-hidden flex flex-col flex-1 p-4">
-                  <div className="flex items-start justify-between mb-2">
-                    <span className="text-4xl filter drop-shadow-[0_4px_12px_rgba(255,255,255,0.15)]">{p.emoji}</span>
-                    <span className="bg-gradient-to-r from-red-500 to-rose-600 text-white text-[9px] font-bold px-2 py-0.5 rounded-lg font-poppins shadow-md">
+                  {/* Product Image Bezel with overlay badge */}
+                  <div className="relative rounded-2xl h-32 overflow-hidden bg-black/10 select-none mb-3">
+                    <img 
+                      src={mapProductImage(p.name)} 
+                      alt={p.name} 
+                      className="w-full h-full object-cover transition-transform duration-[1200ms] group-hover:scale-110"
+                    />
+                    <span className="absolute top-2 left-2 bg-gradient-to-r from-red-500 to-rose-600 text-white text-[9px] font-bold px-2 py-1 rounded-lg font-poppins shadow-md">
                       -{p.discount}%
                     </span>
                   </div>

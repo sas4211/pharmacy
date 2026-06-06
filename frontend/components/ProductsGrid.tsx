@@ -6,6 +6,7 @@ import { productsApi } from '@/lib/api'
 import QuickViewModal, { type QuickViewProduct } from './QuickViewModal'
 import ParticleButton from '@/components/ParticleButton'
 import type { Product } from '@/types'
+import { mapProductImage } from '@/lib/images'
 
 const STATIC_PRODUCTS: QuickViewProduct[] = [
   { name: 'Moisturising Cream 250ml', iconType: 'skin', brand: 'CeraVe', price: 1850, was: 2200, rating: 4.5, desc: 'Lightweight, non-greasy moisturising cream developed with dermatologists. Contains hyaluronic acid and 3 essential ceramides.' },
@@ -175,8 +176,12 @@ export default function ProductsGrid() {
                 >
                   {/* Double Bezel Inner Core */}
                   <div className="bg-off-white/30 rounded-[18px] overflow-hidden flex flex-col flex-1">
-                    <div className="relative bg-white/70 p-6 flex items-center justify-center text-6xl h-36">
-                      <ProductIcon type={p.iconType} className="text-6xl" />
+                    <div className="relative bg-white flex items-center justify-center h-36 overflow-hidden select-none">
+                      <img 
+                        src={mapProductImage(p.name)} 
+                        alt={p.name} 
+                        className="w-full h-full object-cover transition-transform duration-[1200ms] group-hover:scale-110"
+                      />
                       {p.was && (
                         <span className="absolute top-3 left-3 bg-brand-red text-white text-[9px] font-bold px-2 py-0.5 rounded-lg font-poppins">Sale</span>
                       )}

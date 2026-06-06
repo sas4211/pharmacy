@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { useCart, useWishlist, useToast, useRecent } from '@/store'
+import { mapProductImage } from '@/lib/images'
 
 export interface QuickViewProduct {
   name: string
@@ -71,8 +72,12 @@ export default function QuickViewModal({ product, onClose }: Props) {
                 className="absolute top-4 right-4 text-mid-gray hover:text-charcoal text-xl font-bold"
               >✕</button>
               <div className="flex gap-6 items-start">
-                <div className="w-32 h-32 bg-off-white rounded-2xl flex items-center justify-center text-6xl shrink-0">
-                  {product.emoji}
+                <div className="w-32 h-32 bg-off-white rounded-2xl overflow-hidden flex items-center justify-center shrink-0 select-none border border-black/5">
+                  <img 
+                    src={mapProductImage(product.name)} 
+                    alt={product.name} 
+                    className="w-full h-full object-cover"
+                  />
                 </div>
                 <div className="flex-1 min-w-0">
                   <p className="text-xs text-mid-gray font-inter uppercase tracking-wide">{product.brand}</p>
